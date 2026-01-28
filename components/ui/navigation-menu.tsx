@@ -138,9 +138,9 @@ function NavigationMenuPositioner({
         align={align}
         alignOffset={alignOffset}
         className={cn(
-          "isolate z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)]",
+          "isolate z-50 h-(--positioner-height w-(--positioner-width) max-w-(--available-width)",
           "transition-[top,left,right,bottom] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]",
-          "data-[instant]:transition-none",
+          "data-instant:transition-none",
           className
         )}
         {...props}
@@ -153,8 +153,8 @@ function NavigationMenuPositioner({
             "rounded-md",
             "outline-none",
             "transition-all ease-[cubic-bezier(0.22,1,0.36,1)]",
-            "data-[ending-style]:scale-[0.98] data-[ending-style]:opacity-0 data-[ending-style]:duration-150",
-            "data-[starting-style]:scale-[0.98] data-[starting-style]:opacity-0",
+            "data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-ending-style:duration-150",
+            "data-starting-style:scale-[0.98] data-starting-style:opacity-0",
             "xs:w-(--popup-width) relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin)"
           )}
         >
@@ -181,7 +181,7 @@ function NavigationMenuLink({
         "outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
         // Active state: slight emphasis without background blocks
         "data-active:font-medium data-active:text-zinc-950",
-        "[[data-slot=navigation-menu-content]_&]:rounded-sm",
+        "in-data-[slot=navigation-menu-content]:rounded-sm",
         className
       )}
       {...props}
@@ -197,7 +197,7 @@ function NavigationMenuIndicator({
     <NavigationMenuPrimitive.Icon
       data-slot="navigation-menu-indicator"
       className={cn(
-        "top-full z-[1] flex h-2 items-end justify-center overflow-hidden",
+        "top-full z-1 flex h-2 items-end justify-center overflow-hidden",
         "data-[state=visible]:animate-in data-[state=hidden]:animate-out",
         "data-[state=hidden]:fade-out data-[state=visible]:fade-in",
         className
