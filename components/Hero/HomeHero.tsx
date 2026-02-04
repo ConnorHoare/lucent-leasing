@@ -82,12 +82,6 @@ const TrustLine = ({ children }: { children: React.ReactNode }) => (
   <p className="mt-6 text-xs font-medium tracking-wide text-zinc-600">{children}</p>
 )
 
-/**
- * HomeHero (Dyson-ish layout):
- * - Optional full-bleed background image + subtle overlay
- * - Large type, clean grid
- * - Product-card-like media panel on the right
- */
 const HomeHero = ({
   eyebrow = DEFAULTS.eyebrow,
   headline = DEFAULTS.headline,
@@ -136,7 +130,6 @@ const HomeHero = ({
 
       <Container>
         <div className="grid items-start gap-10 py-12 md:grid-cols-12 md:py-16">
-          {/* Copy */}
           <div className="md:col-span-7 lg:col-span-6">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
               {eyebrow}
