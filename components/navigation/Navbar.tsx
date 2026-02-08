@@ -83,7 +83,7 @@ const Navbar = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuLink href="/about" className={navLinkClass}>
+                  <NavigationMenuLink href="/about-us" className={navLinkClass}>
                     About
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -225,7 +225,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/about"
+              href="/about-us"
               className="py-2 text-sm font-medium tracking-wide text-zinc-800 hover:text-zinc-950"
               onClick={() => setOpen(false)}
             >
