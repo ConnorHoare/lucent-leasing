@@ -20,7 +20,17 @@ export default function Home() {
         variant="cards"
       />
       <HomeHowItWorks />
-      <HomeAreasWeCover />
+      <HomeAreasWeCover logos={{items: [
+        { src: "/images/arun-council.png", alt: "Arun Council logo" },
+        { src: "/images/chichester-council.png", alt: "Chichester City Council logo" },
+        { src: "/images/eastbourne-council.png", alt: "Eastbourne Council logo" },
+        { src: "/images/eastleigh-council.png", alt: "Eastleigh Council logo" },
+        { src: "/images/gosport-council.png", alt: "Gosport Council logo" },
+        { src: "/images/rushmoor.jpeg", alt: "Rushmoor Borough Council logo" },
+        { src: "/images/southampton-council.png", alt: "Southampton City Council logo" },
+        { src: "/images/test-council.png", alt: "Test Council logo" },
+        { src: "/images/worthing-council.png", alt: "Worthing Council logo" },
+      ]}}/>
       <HomeTrust />
       <HomeFaqs />
       <FinalCtaBand />
