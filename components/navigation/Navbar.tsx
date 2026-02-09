@@ -91,6 +91,7 @@ const Navbar = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
                     className={`${navLinkClass} hover:cursor-pointer`}
+                    
                   >
                     Services
                   </NavigationMenuTrigger>
