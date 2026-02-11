@@ -1,4 +1,4 @@
-    
+
 import { ServicesFaqs } from "@/components/Services/ServicesFAQ"
 import { ServicesCta } from "@/components/Services/ServicesCTA"
 import { WhoWeSupport } from "@/components/Services/WhoWeSupport"
@@ -8,11 +8,16 @@ import ServicesGrid from "@/components/Services/ServicesGrid"
 const page = () => {
     return (
         <div>
-            <ServicesPageHeader background={{colorClassName: "bg-white"}} textVariant="dark"/>
-            <ServicesGrid background={{colorClassName: "bg-white"}} textVariant="dark"/>
-            <WhoWeSupport background={{colorClassName: "bg-white"}} textVariant="dark"/>
-            <ServicesFaqs background={{colorClassName: "bg-white"}} textVariant="dark"/>
-            <ServicesCta background={{colorClassName: "bg-white"}} textVariant="dark"/>
+            <ServicesPageHeader background={{ colorValue: "#000000" }}
+                textVariant="light" />
+            <ServicesGrid background={{ colorValue: "#000000" }}
+                textVariant="light" />
+            <WhoWeSupport background={{ colorValue: "#000000" }}
+                textVariant="light" />
+            <ServicesFaqs background={{ colorValue: "#000000" }}
+                textVariant="light" />
+            <ServicesCta background={{ colorValue: "#000000" }}
+                textVariant="light" />
         </div>
     )
 }
