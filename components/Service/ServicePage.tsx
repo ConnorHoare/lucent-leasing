@@ -69,8 +69,8 @@ export function ServicePage({
           <div className="py-12 md:py-14">
             <BlockHeader
               eyebrow="Highlights"
-              title="Lorem ipsum dolor sit amet."
-              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              title=""
+              body=""
               textVariant={textVariant}
             />
 
@@ -171,7 +171,7 @@ export function ServicePage({
           <div className="py-12 md:py-14">
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-[0_18px_70px_rgba(0,0,0,0.45)] sm:p-10">
               <div className="pointer-events-none absolute inset-0">
-                <div className="absolute -top-24 left-1/2 h-56 w-[120%] -translate-x-1/2 rounded-full bg-gradient-to-r from-transparent via-white/10 to-transparent blur-3xl" />
+                <div className="absolute -top-24 left-1/2 h-56 w-[120%] -translate-x-1/2 rounded-full bg-linear-to-r from-transparent via-white/10 to-transparent blur-3xl" />
               </div>
 
               <div className="relative grid gap-6 md:grid-cols-12 md:items-center">
