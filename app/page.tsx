@@ -1,5 +1,6 @@
 import HomeHero from "@/components/Hero/HomeHero";
-import HomeAreasWeCover from "@/components/Home/AreasCovered";
+import LogosCarousel from "@/components/Home/AreasCovered";
+
 import FinalCtaBand from "@/components/Home/CTAband";
 import HomeFaqs from "@/components/Home/HomeFAQ";
 import HomeTrust from "@/components/Home/HomeTrust";
@@ -14,7 +15,7 @@ export default function Home() {
       <HomeHero
         background={{ colorValue: "#000000" }}
         textVariant="light"
-        media={{ imageSrc: "/images/hero2.jpg", imageAlt: "Lucent Leasing home hero" }}
+        media={{ imageSrc: "/images/lucent-images/1.jpeg", imageAlt: "Lucent Leasing home hero" }}
         eyebrow="LUCENT LEASING"
       />
 
@@ -39,7 +40,7 @@ export default function Home() {
         textVariant="light"
       />
 
-      <HomeAreasWeCover
+      <LogosCarousel
         background={{ colorValue: "#000000" }}
         textVariant="light"
         logos={{

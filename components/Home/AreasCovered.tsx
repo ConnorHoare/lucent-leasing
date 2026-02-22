@@ -1,59 +1,29 @@
-import React from "react"
-import Link from "next/link"
+"use client"
+import React, { useEffect, useMemo, useState } from "react"
 import Image from "next/image"
 
 type LogoItem = {
   src: string
   alt: string
   caption?: string
+  href?: string
 }
 
-type HomeAreasWeCoverProps = {
-  eyebrow?: string
-  title?: string
-  description?: string
-  areas?: string[]
-  cta?: { label: string; href: string }
-
-  /** NEW */
+type LogosCarouselProps = {
   textVariant?: "dark" | "light"
-
-  /** NEW: Background controls (image OR colour) */
   background?: {
     src?: string
     alt?: string
     overlayStrength?: number // 0–100
     objectClassName?: string
-
     colorClassName?: string
     colorValue?: string
   }
-
-  /** Optional council/partner logos strip */
   logos?: {
     title?: string
     items?: LogoItem[]
+    intervalMs?: number
   }
-}
-
-const DEFAULTS: Required<
-  Pick<HomeAreasWeCoverProps, "eyebrow" | "title" | "description" | "areas" | "cta">
-> = {
-  eyebrow: "Coverage",
-  title: "Areas we cover",
-  description: "We currently work with local authorities and partners across:",
-  areas: [
-    "Southampton",
-    "Chichester",
-    "Gosport",
-    "Eastleigh",
-    "Test Valley",
-    "Rushmoor",
-    "Worthing",
-    "Eastbourne",
-    "Bognor Regis",
-  ],
-  cta: { label: "See all areas", href: "/areas" },
 }
 
 const clamp01 = (n: number) => Math.min(1, Math.max(0, n))
@@ -62,99 +32,81 @@ const Container = ({ children }: { children: React.ReactNode }) => (
   <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">{children}</div>
 )
 
-const SectionHeader = ({
-  eyebrow,
-  title,
-  description,
-  textVariant,
-}: {
-  eyebrow: string
-  title: string
-  description?: string
-  textVariant: "dark" | "light"
-}) => {
+const LogoCard = ({ logo, textVariant }: { logo: LogoItem; textVariant: "dark" | "light" }) => {
   const isLight = textVariant === "light"
-  return (
-    <div className="max-w-2xl">
-      <p
-        className={
-          isLight
-            ? "text-xs font-semibold uppercase tracking-[0.18em] text-white/60"
-            : "text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500"
-        }
-      >
-        {eyebrow}
-      </p>
-      <h2
-        className={
-          isLight
-            ? "mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
-            : "mt-3 text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
-        }
-      >
-        {title}
-      </h2>
-      {description ? (
-        <p className={isLight ? "mt-3 text-base leading-relaxed text-white/75" : "mt-3 text-base leading-relaxed text-zinc-700"}>
-          {description}
+
+  const card = (
+    <div
+      className={[
+        "flex flex-col items-center justify-center rounded-2xl border p-6 shadow-sm",
+        isLight ? "border-white/10 bg-black/20" : "border-zinc-200 bg-white",
+      ].join(" ")}
+    >
+      {/* Bigger logo area */}
+      <div className="relative h-20 w-full sm:h-24 md:h-28">
+        <Image
+          src={logo.src}
+          alt={logo.alt}
+          fill
+          sizes="(min-width: 1024px) 520px, 90vw"
+          className="object-contain"
+          priority={false}
+        />
+      </div>
+
+      {logo.caption ? (
+        <p className={isLight ? "mt-3 text-center text-sm text-white/65" : "mt-3 text-center text-sm text-zinc-600"}>
+          {logo.caption}
         </p>
       ) : null}
     </div>
   )
-}
 
-const PrimaryLink = ({
-  href,
-  children,
-  textVariant,
-}: {
-  href: string
-  children: React.ReactNode
-  textVariant: "dark" | "light"
-}) => {
-  const isLight = textVariant === "light"
-  return (
-    <Link
-      href={href}
-      className={[
-        "inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-        isLight
-          ? "bg-white text-zinc-950 hover:bg-white/90 focus-visible:ring-white/25 focus-visible:ring-offset-black"
-          : "bg-zinc-950 text-white hover:bg-zinc-900 focus-visible:ring-zinc-900/15 focus-visible:ring-offset-white",
-      ].join(" ")}
-    >
-      {children}
-      <span aria-hidden="true" className={isLight ? "text-zinc-950/70" : "text-white/80"}>
-        →
-      </span>
-    </Link>
+  return logo.href ? (
+    <a href={logo.href} target="_blank" rel="noreferrer" className="block">
+      {card}
+    </a>
+  ) : (
+    card
   )
 }
 
-const AreaPill = ({ name, textVariant }: { name: string; textVariant: "dark" | "light" }) => {
-  const isLight = textVariant === "light"
-  return (
-    <span
-      className={[
-        "inline-flex items-center rounded-full border px-4 py-2 text-sm shadow-sm",
-        isLight ? "border-white/12 bg-white/5 text-white/80" : "border-zinc-200 bg-white text-zinc-800",
-      ].join(" ")}
-    >
-      {name}
-    </span>
-  )
-}
-
-const LogosStrip = ({
+const LogosStripCarousel = ({
   title,
   items,
   textVariant,
+  intervalMs = 2600,
 }: {
   title?: string
   items: LogoItem[]
   textVariant: "dark" | "light"
+  intervalMs?: number
 }) => {
   const isLight = textVariant === "light"
+  const safeItems = useMemo(() => items ?? [], [items])
+
+  const len = safeItems.length
+  const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  const safeIndex = len > 0 ? ((index % len) + len) % len : 0
+  const canScroll = len > 1
+
+  useEffect(() => {
+    if (!canScroll) return
+    if (paused) return
+
+    const t = setInterval(() => {
+      setIndex((i) => {
+        const next = i + 1
+        return len > 0 ? next % len : 0
+      })
+    }, intervalMs)
+
+    return () => clearInterval(t)
+  }, [paused, canScroll, intervalMs, len])
+
+  const current = len ? safeItems[safeIndex] : null
 
   return (
     <div
@@ -162,57 +114,70 @@ const LogosStrip = ({
         "mt-8 rounded-3xl border p-6 sm:p-7",
         isLight ? "border-white/10 bg-white/5" : "border-zinc-200 bg-zinc-50",
       ].join(" ")}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
     >
-      <p
-        className={
-          isLight
-            ? "text-xs font-semibold uppercase tracking-[0.18em] text-white/60"
-            : "text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500"
-        }
-      >
-        {title || "Working with local authorities across…"}
-      </p>
+      <div className="flex items-center justify-between gap-4">
+        <p
+          className={
+            isLight
+              ? "text-xs font-semibold uppercase tracking-[0.18em] text-white/60"
+              : "text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500"
+          }
+        >
+          {title || "Working with local authorities across…"}
+        </p>
 
-      <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-        {items.map((logo) => (
-          <div
-            key={`${logo.src}-${logo.alt}`}
-            className={[
-              "flex flex-col items-center justify-center rounded-2xl border p-4 shadow-sm",
-              isLight ? "border-white/10 bg-black/20" : "border-zinc-200 bg-white",
-            ].join(" ")}
-          >
-            <div className="relative h-10 w-full">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                fill
-                sizes="(min-width: 1024px) 150px, 33vw"
-                className="object-contain"
+        {/* Dots (one per logo, capped for neatness) */}
+        {canScroll ? (
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            {Array.from({ length: Math.min(10, len) }).map((_, i) => (
+              <span
+                key={i}
+                className={[
+                  "h-1.5 w-1.5 rounded-full",
+                  i === safeIndex
+                    ? isLight
+                      ? "bg-white/80"
+                      : "bg-zinc-900"
+                    : isLight
+                      ? "bg-white/25"
+                      : "bg-zinc-300",
+                ].join(" ")}
               />
-            </div>
-            {logo.caption ? (
-              <p className={isLight ? "mt-2 text-center text-xs text-white/60" : "mt-2 text-center text-xs text-zinc-600"}>
-                {logo.caption}
-              </p>
-            ) : null}
+            ))}
           </div>
-        ))}
+        ) : null}
       </div>
+
+      {/* Show only ONE logo at a time */}
+      <div className="mt-5">
+        {current ? (
+          <div key={`${current.src}-${safeIndex}`} className="animate-[fadeIn_450ms_ease-out]">
+            <LogoCard logo={current} textVariant={textVariant} />
+          </div>
+        ) : null}
+      </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(2px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   )
 }
 
-const HomeAreasWeCover = ({
-  eyebrow = DEFAULTS.eyebrow,
-  title = DEFAULTS.title,
-  description = DEFAULTS.description,
-  areas = DEFAULTS.areas,
-  cta = DEFAULTS.cta,
-  logos,
-  textVariant = "dark",
-  background = {},
-}: HomeAreasWeCoverProps) => {
+const LogosCarousel = ({ textVariant = "dark", background = {}, logos = {} }: LogosCarouselProps) => {
   const isLight = textVariant === "light"
   const overlay = clamp01((background.overlayStrength ?? 0) / 100)
 
@@ -220,6 +185,7 @@ const HomeAreasWeCover = ({
   const hasColour = Boolean(background.colorClassName || background.colorValue)
 
   const dividerClass = isLight ? "bg-white/12" : "bg-zinc-200"
+  const items = logos.items ?? []
 
   return (
     <section
@@ -269,52 +235,31 @@ const HomeAreasWeCover = ({
       ) : null}
 
       <Container>
-        <div className="grid gap-10 py-12 md:grid-cols-12 md:items-start md:py-14">
-          {/* Left */}
-          <div className="md:col-span-4">
-            <SectionHeader eyebrow={eyebrow} title={title} description={description} textVariant={textVariant} />
-
-            <div className="mt-6">
-              <PrimaryLink href={cta.href} textVariant={textVariant}>
-                {cta.label}
-              </PrimaryLink>
-            </div>
-          </div>
-
-          {/* Right */}
-          <div className="md:col-span-8">
+        <div className="py-12 md:py-14">
+          {items.length ? (
+            <LogosStripCarousel
+              title={logos.title}
+              items={items}
+              textVariant={textVariant}
+              intervalMs={logos.intervalMs ?? 2600}
+            />
+          ) : (
             <div
               className={[
-                "rounded-3xl border p-6 shadow-sm sm:p-7",
-                isLight ? "border-white/10 bg-white/5" : "border-zinc-200 bg-white",
+                "rounded-3xl border p-6 sm:p-7",
+                isLight ? "border-white/10 bg-white/5" : "border-zinc-200 bg-zinc-50",
               ].join(" ")}
             >
-              <div className="flex flex-wrap gap-2">
-                {areas.map((a) => (
-                  <AreaPill key={a} name={a} textVariant={textVariant} />
-                ))}
-              </div>
-
-              {/* separator */}
-              <div className={`mt-8 h-px w-full ${dividerClass}`} />
-
-              <p className={isLight ? "mt-6 text-sm leading-relaxed text-white/75" : "mt-6 text-sm leading-relaxed text-zinc-700"}>
-                Working with local authorities and housing partners across the South and South East.
-              </p>
+              <p className={isLight ? "text-sm text-white/70" : "text-sm text-zinc-700"}>Add logo items to display the carousel.</p>
+              <div className={`mt-6 h-px w-full ${dividerClass}`} />
             </div>
+          )}
 
-            {/* Optional council logos */}
-            {logos?.items && logos.items.length > 0 ? (
-              <LogosStrip title={logos.title} items={logos.items} textVariant={textVariant} />
-            ) : null}
-
-            {/* Divider rhythm */}
-            <div className={`mt-10 h-px w-full ${dividerClass}`} />
-          </div>
+          <div className={`mt-10 h-px w-full ${dividerClass}`} />
         </div>
       </Container>
     </section>
   )
 }
 
-export default HomeAreasWeCover
+export default LogosCarousel
