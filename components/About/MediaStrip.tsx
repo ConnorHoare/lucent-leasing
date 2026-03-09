@@ -27,10 +27,10 @@ const DEFAULTS: Required<Pick<AboutMediaStripProps, "eyebrow" | "title" | "descr
     description:
         "A quick look at the kind of accommodation and standards we aim to maintain—clean, placement-ready, and managed with care.",
     items: [
-        { src: "/images/hero.jpg", alt: "Modern living room", caption: "Placement-ready homes" },
-        { src: "/images/hero.jpg", alt: "Kitchen and dining space", caption: "Maintained standards" },
-        { src: "/images/hero.jpg", alt: "Bedroom", caption: "Comfort and suitability" },
-        { src: "/images/hero.jpg", alt: "Building exterior", caption: "Reliable local supply" },
+        { src: "/images/lucent-images/4.jpeg", alt: "Modern living room", caption: "Placement-ready homes" },
+        { src: "/images/lucent-images/5.jpeg", alt: "Kitchen and dining space", caption: "Maintained standards" },
+        { src: "/images/lucent-images/6.jpeg", alt: "Bedroom", caption: "Comfort and suitability" },
+        { src: "/images/lucent-images/7.jpeg", alt: "Building exterior", caption: "Reliable local supply" },
     ],
 }
 
@@ -117,7 +117,7 @@ const AboutMediaStrip = ({
                                     <div className="relative aspect-21/9 w-full">
                                         <Image
                                             src={items[0]?.src}
-                                            alt={items[0]?.alt || "Lucent Leasing"}
+                                            alt={items[0]?.alt || "Lucent Leases"}
                                             fill
                                             priority
                                             sizes="(min-width: 768px) 66vw, 100vw"

@@ -8,7 +8,7 @@ export const CONFIG: ServiceConfig = {
   intro:
     "High-quality, fully self-contained homes for residents who need immediate accommodation—providing privacy, security, and a safe place to reset during a period of uncertainty.",
   heroImage: {
-    src: "/images/services/nightly-self-contained.jpg",
+    src: "/images/lucent-images/18.jpeg",
     alt: "Nightly self-contained accommodation",
   },
 

@@ -8,7 +8,7 @@ export const CONFIG: ServiceConfig = {
   intro:
     "Supported shared accommodation in well-managed HMOs—providing a safe, structured environment with practical, welfare-focused support to help residents live independently and build confidence.",
   heroImage: {
-    src: "/images/services/supported-shared-accommodation.jpg",
+    src: "/images/lucent-images/19.jpeg",
     alt: "Supported shared accommodation in a managed shared home",
   },
 

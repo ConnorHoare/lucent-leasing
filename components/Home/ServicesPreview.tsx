@@ -309,7 +309,7 @@ const HomeServicesPreview = ({
                 <div className="absolute inset-0 -z-10">
                     <Image
                         src={background.src!}
-                        alt={background.alt || "Lucent Leasing"}
+                        alt={background.alt || "Lucent Leases"}
                         fill
                         sizes="100vw"
                         className={["object-cover", background.objectClassName].filter(Boolean).join(" ")}

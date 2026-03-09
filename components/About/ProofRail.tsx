@@ -20,10 +20,10 @@ const DEFAULTS: Required<Pick<AboutProofRailProps, "eyebrow" | "title" | "items"
   eyebrow: "What you can expect",
   title: "Standards you can see.",
   items: [
-    { src: "/images/hero.jpg", alt: "Property checks", title: "Property checks", subtitle: "Clear expectations" },
-    { src: "/images/hero.jpg", alt: "Move-in readiness", title: "Placement-ready", subtitle: "Prepared for occupancy" },
-    { src: "/images/hero.jpg", alt: "Maintenance coordination", title: "Maintenance coordination", subtitle: "Practical workflows" },
-    { src: "/images/hero.jpg", alt: "Professional communication", title: "Responsive communication", subtitle: "Straightforward updates" },
+    { src: "/images/lucent-images/9.jpeg", alt: "Property checks", title: "Property checks", subtitle: "Clear expectations" },
+    { src: "/images/lucent-images/10.jpeg", alt: "Move-in readiness", title: "Placement-ready", subtitle: "Prepared for occupancy" },
+    { src: "/images/lucent-images/11.jpeg", alt: "Maintenance coordination", title: "Maintenance coordination", subtitle: "Practical workflows" },
+    { src: "/images/lucent-images/12.jpeg", alt: "Professional communication", title: "Responsive communication", subtitle: "Straightforward updates" },
   ],
 }
 

@@ -23,7 +23,7 @@ const DEFAULTS: Required<Pick<WhatWeDoProps, "eyebrow" | "title" | "description"
   eyebrow: "What we do",
   title: "What we do",
   description:
-    "Lucent Leasing provides accommodation solutions in partnership with local authorities and housing partners. We source and manage properties, coordinate placements, and maintain high standards—helping create stable outcomes while reducing pressure on public services.",
+    "Lucent Leases provides accommodation solutions in partnership with local authorities and housing partners. We source and manage properties, coordinate placements, and maintain high standards—helping create stable outcomes while reducing pressure on public services.",
 }
 
 const Container = ({ children }: { children: React.ReactNode }) => (
@@ -75,7 +75,7 @@ const HomeWhatWeDo = ({
         <div className="absolute inset-0 -z-10">
           <Image
             src={background.src!}
-            alt={background.alt || "Lucent Leasing"}
+            alt={background.alt || "Lucent Leases"}
             fill
             sizes="100vw"
             className={["object-cover", background.objectClassName].filter(Boolean).join(" ")}

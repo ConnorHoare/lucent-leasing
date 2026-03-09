@@ -15,8 +15,8 @@ export default function Home() {
       <HomeHero
         background={{ colorValue: "#000000" }}
         textVariant="light"
-        media={{ imageSrc: "/images/lucent-images/1.jpeg", imageAlt: "Lucent Leasing home hero" }}
-        eyebrow="LUCENT LEASING"
+        media={{ imageSrc: "/images/lucent-images/1.jpeg", imageAlt: "Lucent Leases home hero" }}
+        eyebrow="LUCENT LEACES"
       />
 
       <HomeWhatWeDo

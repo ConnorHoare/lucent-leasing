@@ -8,7 +8,7 @@ export const CONFIG: ServiceConfig = {
   intro:
     "A stable, temporary home with tailored, practical support—helping residents build skills, regain confidence, and take clear steps toward independence and permanent accommodation.",
   heroImage: {
-    src: "/images/services/active-opportunities-pathway.jpg",
+    src: "/images/lucent-images/21.jpeg",
     alt: "Active opportunities pathway accommodation and support",
   },
 

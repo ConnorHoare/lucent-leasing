@@ -8,7 +8,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import Searchbar from "@/components/navigation/Searchbar"
 import Link from "next/link"
 
 const navLinkClass =
@@ -18,7 +17,7 @@ function Logo({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label="Lucent Leasing"
+      aria-label="Lucent Leases"
       className={[
         "inline-flex items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
         className,
@@ -228,12 +227,6 @@ const Navbar = () => {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="min-w-72 border border-white/10 bg-black/95 p-2 text-white shadow-lg backdrop-blur">
                       <NavigationMenuLink
-                        href={`/services-for-councils#${slugify("Services for Councils")}`}
-                        className={navLinkClass}
-                      >
-                        Services for Councils
-                      </NavigationMenuLink>
-                      <NavigationMenuLink
                         href={`/services-for-councils#${slugify("Partnership Approach")}`}
                         className={navLinkClass}
                       >
@@ -294,7 +287,7 @@ const Navbar = () => {
           {/* RIGHT: search (hidden in mobile) */}
           <div ref={rightRef} className="ml-auto flex min-w-0 flex-1 justify-end">
             <div className={showMobile ? "hidden" : "hidden md:block w-full max-w-sm"}>
-              <Searchbar placeholder="Search…" />
+              {/* <Searchbar placeholder="Search…" /> */}
             </div>
 
             {/* Mobile spacer to visually balance the hamburger width so logo remains centered */}
@@ -313,7 +306,7 @@ const Navbar = () => {
         ].join(" ")}
       >
         <div className="mx-auto max-w-350 px-4 py-4 sm:px-6">
-          <Searchbar className="mb-4" placeholder="Search…" />
+          {/* <Searchbar className="mb-4" placeholder="Search…" /> */}
 
           <nav className="flex flex-col">
             {/* About Us */}
@@ -387,7 +380,7 @@ const Navbar = () => {
               <span className="text-white/60">{mobileOpen.councils ? "−" : "+"}</span>
             </button>
             <div className={mobileOpen.councils ? "pb-2 pl-3" : "hidden"}>
-              {["Services for Councils", "Partnership Approach", "Supporting Placements"].map((t) => (
+              {["Partnership Approach", "Supporting Placements"].map((t) => (
                 <Link
                   key={t}
                   href={`/services-for-councils#${slugify(t)}`}

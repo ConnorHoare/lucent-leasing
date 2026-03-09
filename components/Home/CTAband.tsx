@@ -34,7 +34,7 @@ const DEFAULTS: Required<
   eyebrow: "Next steps",
   title: "Ready to discuss a placement or partnership?",
   description:
-    "Whether you’re a local authority, landlord, or housing partner—Lucent Leasing is here to help.",
+    "Whether you’re a local authority, landlord, or housing partner—Lucent Leases is here to help.",
   primaryCta: { label: "Contact us", href: "/contact" },
   email: "hello@lucentleases.co.uk",
   textVariant: "dark",

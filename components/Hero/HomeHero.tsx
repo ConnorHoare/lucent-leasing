@@ -41,10 +41,10 @@ type HomeHeroProps = {
 const DEFAULTS: Required<
   Pick<HomeHeroProps, "headline" | "subheadline" | "primaryCta" | "secondaryCta" | "trustLine" | "eyebrow">
 > = {
-  eyebrow: "Lucent Leasing",
+  eyebrow: "Lucent Leases",
   headline: "Accommodation delivered with clarity, care, and reliability.",
   subheadline:
-    "Lucent Leasing works with local authorities, landlords, and housing partners to provide safe, high-quality temporary, supported, and self-contained accommodation for individuals and families who need housing.",
+    "Lucent Leases works with local authorities, landlords, and housing partners to provide safe, high-quality temporary, supported, and self-contained accommodation for individuals and families who need housing.",
   primaryCta: { label: "Make an enquiry", href: "/contact" },
   secondaryCta: { label: "Landlords: lease your property", href: "/landlords" },
   trustLine: "Public-sector friendly processes • Responsive communication • Property-first standards",
@@ -187,7 +187,7 @@ const HomeHero = ({
         <div className="absolute inset-0 -z-10">
           <Image
             src={background.src!}
-            alt={background.alt || "Lucent Leasing"}
+            alt={background.alt || "Lucent Leases"}
             fill
             priority
             sizes="100vw"
@@ -275,7 +275,7 @@ const HomeHero = ({
                 <div className="relative aspect-16/10 w-full overflow-hidden">
                   <Image
                     src={media.imageSrc}
-                    alt={media.imageAlt || "Lucent Leasing accommodation"}
+                    alt={media.imageAlt || "Lucent Leases accommodation"}
                     fill
                     priority
                     sizes="(min-width: 768px) 50vw, 100vw"
