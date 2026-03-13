@@ -2,57 +2,63 @@ import PageHeader from "@/components/About/PageHeader"
 import AboutMediaStrip from "@/components/About/MediaStrip"
 import AboutProofRail from "@/components/About/ProofRail"
 import AboutWhoWeWorkWith from "@/components/About/WhoWeWorkWith"
-import FinalCtaBand from "@/components/Home/CTAband"
-import { AboutOurStrategy, AboutOurTeam, AboutPurposeValues, AboutWhoWeAre } from "@/components/About/AboutBriefSections"
-import LogosCarousel from "@/components/Home/AreasCovered"
+import FinalCtaBand from "@/components/About/FinalCtaBand"
+import LogosCarousel from "@/components/About/LogosCarousel"
+import {
+  AboutWhoWeAre,
+  AboutOurTeam,
+  AboutPurposeValues,
+  AboutOurStrategy
+} from '@/components/About/AboutBriefSections'
 
-
-
-const page = () => {
+export default function AboutPage() {
   return (
     <div>
+      {/* 01 — Hero header */}
       <PageHeader
         eyebrow="About"
         title="About Lucent Leases"
-        intro="Lucent Leases Ltd (Lucent Leases) is a UK-based leasing and accommodation provider working in partnership with local authorities and housing partners. We deliver safe, high-quality temporary, supported, and self-contained accommodation for individuals and families who need housing—helping create stable outcomes while reducing pressure on public services."
+        intro="Lucent Leases Ltd is a UK-based leasing and accommodation provider working in partnership with local authorities and housing partners. We deliver safe, high-quality temporary, supported, and self-contained accommodation for individuals and families who need housing — helping create stable outcomes while reducing pressure on public services."
         chips={["UK-based", "Local authorities", "Landlords", "Housing partners"]}
-        background={{ colorValue: "#000000", overlayStrength: 0 }}
         textVariant="light"
       />
 
-      <AboutMediaStrip background={{ colorValue: "#000000" }} textVariant="light" />
+      {/* 02 — Property photography editorial grid */}
+      <AboutMediaStrip textVariant="light" />
 
-      {/* NEW BRIEF-CORRECT SECTIONS + CORRECT ANCHOR IDS */}
-      <AboutWhoWeAre background={{ colorValue: "#000000" }} textVariant="light" />
-      <AboutOurTeam background={{ colorValue: "#000000" }} textVariant="light" />
-      <AboutPurposeValues background={{ colorValue: "#000000" }} textVariant="light" />
-      <AboutOurStrategy background={{ colorValue: "#000000" }} textVariant="light" />
+      {/* 03–06 — Numbered editorial text sections */}
+      <AboutWhoWeAre />
+      <AboutOurTeam />
+      <AboutPurposeValues />
+      <AboutOurStrategy />
 
-      <AboutProofRail background={{ colorValue: "#000000" }} textVariant="light" />
+      {/* 07 — Standards proof rail (horizontal scroll) */}
+      <AboutProofRail textVariant="light" />
 
-      <AboutWhoWeWorkWith background={{ colorValue: "#000000", overlayStrength: 0 }} textVariant="light" />
+      {/* 08 — Interactive partner selector */}
+      <AboutWhoWeWorkWith textVariant="light" />
 
+      {/* 09 — Council logos marquee */}
       <LogosCarousel
-        background={{ colorValue: "#000000" }}
         textVariant="light"
         logos={{
+          title: "Working with local authorities across the South Coast",
           items: [
-            { src: "/images/arun-council.png", alt: "Arun Council logo" },
-            { src: "/images/chichester-council.png", alt: "Chichester City Council logo" },
-            { src: "/images/eastbourne-council.png", alt: "Eastbourne Council logo" },
-            { src: "/images/eastleigh-council.png", alt: "Eastleigh Council logo" },
-            { src: "/images/gosport-council.png", alt: "Gosport Council logo" },
-            { src: "/images/rushmoor.jpeg", alt: "Rushmoor Borough Council logo" },
-            { src: "/images/southampton-council.png", alt: "Southampton City Council logo" },
-            { src: "/images/test-council.png", alt: "Test Council logo" },
-            { src: "/images/worthing-council.png", alt: "Worthing Council logo" },
+            { src: "/images/arun-council.png", alt: "Arun Council" },
+            { src: "/images/chichester-council.png", alt: "Chichester City Council" },
+            { src: "/images/eastbourne-council.png", alt: "Eastbourne Council" },
+            { src: "/images/eastleigh-council.png", alt: "Eastleigh Council" },
+            { src: "/images/gosport-council.png", alt: "Gosport Council" },
+            { src: "/images/rushmoor.jpeg", alt: "Rushmoor Borough Council" },
+            { src: "/images/southampton-council.png", alt: "Southampton City Council" },
+            { src: "/images/test-council.png", alt: "Test Valley Borough Council" },
+            { src: "/images/worthing-council.png", alt: "Worthing Council" },
           ],
         }}
       />
 
-      <FinalCtaBand background={{ colorValue: "#000000", overlayStrength: 0 }} textVariant="light" />
+      {/* 10 — Full-bleed closing CTA */}
+      <FinalCtaBand textVariant="light" />
     </div>
   )
 }
-
-export default page

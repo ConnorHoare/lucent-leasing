@@ -1,4 +1,3 @@
-import React from "react"
 import AboutEditorialSection from "./AboutEditorialSection"
 
 type Props = {
@@ -6,11 +5,12 @@ type Props = {
   background?: { colorClassName?: string; colorValue?: string }
 }
 
-export const AboutWhoWeAre = ({ textVariant = "light", background = { colorValue: "#000000" } }: Props) => (
+export const AboutWhoWeAre = ({ textVariant = "light", background = { colorValue: "#080808" } }: Props) => (
   <AboutEditorialSection
     id="who-we-are"
     eyebrow="About Us"
     title="Who We Are"
+    sectionIndex={1}
     textVariant={textVariant}
     background={background}
     paragraphs={[
@@ -22,11 +22,12 @@ export const AboutWhoWeAre = ({ textVariant = "light", background = { colorValue
   />
 )
 
-export const AboutOurTeam = ({ textVariant = "light", background = { colorValue: "#000000" } }: Props) => (
+export const AboutOurTeam = ({ textVariant = "light", background = { colorValue: "#080808" } }: Props) => (
   <AboutEditorialSection
     id="our-team"
     eyebrow="About Us"
     title="Our Team"
+    sectionIndex={2}
     textVariant={textVariant}
     background={background}
     paragraphs={[
@@ -36,31 +37,33 @@ export const AboutOurTeam = ({ textVariant = "light", background = { colorValue:
   />
 )
 
-export const AboutPurposeValues = ({ textVariant = "light", background = { colorValue: "#000000" } }: Props) => (
+export const AboutPurposeValues = ({ textVariant = "light", background = { colorValue: "#080808" } }: Props) => (
   <AboutEditorialSection
     id="our-purpose-and-values"
     eyebrow="About Us"
     title="Our Purpose & Values"
+    sectionIndex={3}
     textVariant={textVariant}
     background={background}
     paragraphs={[
       "At Lucent Leases, we believe that when vulnerable people have a safe, supportive home and the right guidance, they can become more independent and less reliant on local authorities. That belief shapes everything we do.",
-      "We work in partnership with local councils and other organisations to provide high-quality, secure homes for those in need. Every situation is unique, so we focus on delivering the right property quickly, ensuring residents are well looked after. Whether it’s temporary accommodation or supported shared housing, every property is maintained to the same high standards and benefits from a 24/7 maintenance service to resolve any issues promptly.",
+      "We work in partnership with local councils and other organisations to provide high-quality, secure homes for those in need. Every situation is unique, so we focus on delivering the right property quickly, ensuring residents are well looked after. Whether it's temporary accommodation or supported shared housing, every property is maintained to the same high standards and benefits from a 24/7 maintenance service to resolve any issues promptly.",
       "Equally important is the practical support we provide. Simple things that many of us take for granted—such as bedding, laundry, reminders for appointments, or connecting residents with the right support services—make a significant difference. Our experienced team visits residents regularly, helping to resolve minor issues early and maintaining a safe, harmonious environment.",
       "With years of specialist housing experience, Lucent Leases knows that being proactive, delivering high standards, and offering a little extra care works. By looking after our residents, we ensure our partners, councils, and communities are supported too.",
     ]}
   />
 )
 
-export const AboutOurStrategy = ({ textVariant = "light", background = { colorValue: "#000000" } }: Props) => (
+export const AboutOurStrategy = ({ textVariant = "light", background = { colorValue: "#080808" } }: Props) => (
   <AboutEditorialSection
     id="our-strategy"
     eyebrow="About Us"
     title="Our Strategy"
+    sectionIndex={4}
     textVariant={textVariant}
     background={background}
     paragraphs={[
-      "Our strategy focuses on growing Lucent Leases’ services along the South Coast while maintaining exceptional standards of housing and support. We aim to build strong, lasting partnerships with councils and other organisations, ensuring our homes meet urgent housing needs without compromising quality or care.",
+      "Our strategy focuses on growing Lucent Leases' services along the South Coast while maintaining exceptional standards of housing and support. We aim to build strong, lasting partnerships with councils and other organisations, ensuring our homes meet urgent housing needs without compromising quality or care.",
       "We prioritize compliance, safety, and welfare in every placement, while continuously improving our services to respond to the evolving needs of residents and local authorities. Our growth is guided by professionalism, accountability, and a commitment to supporting communities through high-quality housing solutions.",
     ]}
   />

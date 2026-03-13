@@ -23,7 +23,7 @@ function Logo({ className = "" }: { className?: string }) {
         className,
       ].join(" ")}
     >
-      <span className="text-base font-semibold tracking-tight text-white">
+      <span className="text-3xl font-semibold text-white">
         Lucent
       </span>
     </Link>
