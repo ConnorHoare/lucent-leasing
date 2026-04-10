@@ -82,9 +82,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavbarTest />
+        {/* <NavbarTest />
         {children}
-        <Footer />
+        <Footer /> */}
       </body>
     </html>
   );
